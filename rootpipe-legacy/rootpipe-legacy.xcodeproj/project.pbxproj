@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44654FDB1AD7494A006E4CCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44654FDA1AD7494A006E4CCB /* main.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		44654FDB1AD7494A006E4CCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44654FDA1AD7494A006E4CCB /* main.m */; };
 		44654FE31AD749B2006E4CCB /* Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44654FE21AD749B2006E4CCB /* Admin.framework */; };
 		44654FE51AD74BE5006E4CCB /* SecurityFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44654FE41AD74BE5006E4CCB /* SecurityFoundation.framework */; };
 /* End PBXBuildFile section */
@@ -178,7 +178,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -186,6 +186,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -214,7 +215,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				STRIPFLAGS = "-S -x";
 			};
 			name = Release;
@@ -260,6 +261,7 @@
 				44654FE01AD7494A006E4CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
