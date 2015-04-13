@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		440A9BC71AD73E90009BF06A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 440A9BC61AD73E90009BF06A /* main.m */; settings = {COMPILER_FLAGS = "-w"; }; };
-		440A9BCF1AD73EE8009BF06A /* SystemAdministration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440A9BCE1AD73EE8009BF06A /* SystemAdministration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		440A9BC31AD73E90009BF06A /* rootpipe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rootpipe; sourceTree = BUILT_PRODUCTS_DIR; };
 		440A9BC61AD73E90009BF06A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		440A9BCE1AD73EE8009BF06A /* SystemAdministration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemAdministration.framework; path = /System/Library/PrivateFrameworks/SystemAdministration.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,7 +32,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				440A9BCF1AD73EE8009BF06A /* SystemAdministration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +42,6 @@
 			isa = PBXGroup;
 			children = (
 				440A9BC51AD73E90009BF06A /* rootpipe */,
-				440A9BCD1AD73ECC009BF06A /* Frameworks */,
 				440A9BC41AD73E90009BF06A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,14 +60,6 @@
 				440A9BC61AD73E90009BF06A /* main.m */,
 			);
 			path = rootpipe;
-			sourceTree = "<group>";
-		};
-		440A9BCD1AD73ECC009BF06A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				440A9BCE1AD73EE8009BF06A /* SystemAdministration.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

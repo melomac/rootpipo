@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		44654FDB1AD7494A006E4CCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44654FDA1AD7494A006E4CCB /* main.m */; settings = {COMPILER_FLAGS = "-w"; }; };
-		44654FE31AD749B2006E4CCB /* Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44654FE21AD749B2006E4CCB /* Admin.framework */; };
 		44654FE51AD74BE5006E4CCB /* SecurityFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44654FE41AD74BE5006E4CCB /* SecurityFoundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +26,6 @@
 /* Begin PBXFileReference section */
 		44654FD71AD7494A006E4CCB /* rootpipe-legacy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "rootpipe-legacy"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44654FDA1AD7494A006E4CCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		44654FE21AD749B2006E4CCB /* Admin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Admin.framework; path = /System/Library/PrivateFrameworks/Admin.framework; sourceTree = "<absolute>"; };
 		44654FE41AD74BE5006E4CCB /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = System/Library/Frameworks/SecurityFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -36,7 +34,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44654FE31AD749B2006E4CCB /* Admin.framework in Frameworks */,
 				44654FE51AD74BE5006E4CCB /* SecurityFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +69,6 @@
 		44654FE11AD74992006E4CCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				44654FE21AD749B2006E4CCB /* Admin.framework */,
 				44654FE41AD74BE5006E4CCB /* SecurityFoundation.framework */,
 			);
 			name = Frameworks;
