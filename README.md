@@ -2,8 +2,7 @@
 
 Objective-C variant of [CVE-2015-1130](https://truesecdev.wordpress.com/2015/04/09/hidden-backdoor-api-to-root-privileges-in-apple-os-x/), aka _rootpipe_.
 
-`rootpipe` works on OS X 10.9 and OS X < 10.10.3.
-`rootpipe-lagacy` works on OS X 10.7 and 10.8.
+`rootpipe` is the exploit.
 `rootshell` is a handy root shell launcher.
 
 
@@ -13,14 +12,10 @@ Objective-C variant of [CVE-2015-1130](https://truesecdev.wordpress.com/2015/04/
 	$ /tmp/pipo
 	# id
 
-	$ ./rootpipe-legacy rootshell /tmp/pipo
-	$ /tmp/pipo
-	# id
-
 
 ### Limitations
 
-`rootpipe-legacy` must be run from a logged in __console__ user with __administrator__ privileges, i.e. not through SSH.
+Legacy exploit, i.e. OS X < 10.9, must be run from a logged in __console__ user with __administrator__ privileges, i.e. not through SSH.
 
 
 ### Thanks
