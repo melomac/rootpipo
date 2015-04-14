@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		440A9BC71AD73E90009BF06A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 440A9BC61AD73E90009BF06A /* main.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		440A9BC71AD73E90009BF06A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 440A9BC61AD73E90009BF06A /* main.m */; };
 		440A9BCF1AD73EE8009BF06A /* SystemAdministration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440A9BCE1AD73EE8009BF06A /* SystemAdministration.framework */; };
 /* End PBXBuildFile section */
 
