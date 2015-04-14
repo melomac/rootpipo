@@ -39,7 +39,7 @@ int main(int argc, const char *argv[])
 	
 	SFAuthorization *authref = [SFAuthorization authorization];
 	
-	if ([authref obtainWithRight:"system.preferences" flags:3 error:nil])
+	if ([authref obtainWithRight:"system.preferences" flags:kAuthorizationFlagInteractionAllowed|kAuthorizationFlagExtendRights error:nil])
 	{
 		[authent authenticateUsingAuthorizationSync:authref];
 		
