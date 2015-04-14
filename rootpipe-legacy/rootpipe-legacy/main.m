@@ -38,15 +38,6 @@ int main(int argc, const char *argv[])
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	BOOL isDir;
-	
-	if (![[NSFileManager defaultManager] fileExistsAtPath:@(argv[1]) isDirectory:&isDir] || isDir)
-	{
-		fprintf(stderr, "Invalid source.\n");
-		
-		return EXIT_FAILURE;
-	}
-	
 	
 	// https://truesecdev.wordpress.com/2015/04/09/hidden-backdoor-api-to-root-privileges-in-apple-os-x/
 	
